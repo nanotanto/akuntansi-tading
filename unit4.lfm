@@ -1,0 +1,92 @@
+object fAkun: TfAkun
+  Left = 362
+  Height = 531
+  Top = 139
+  Width = 931
+  AutoSize = True
+  Caption = 'Daftar Akun'
+  ClientHeight = 0
+  ClientWidth = 0
+  OnClose = FormClose
+  Position = poMainFormCenter
+  LCLVersion = '1.2.6.0'
+  object Label1: TLabel
+    Left = 392
+    Height = 24
+    Top = 0
+    Width = 155
+    Caption = 'DAFTAR AKUN'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -21
+    Font.Name = 'Arial Rounded MT Bold'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+  object DBGrid1: TDBGrid
+    Left = 8
+    Height = 640
+    Top = 48
+    Width = 920
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'No Akun'
+        FieldName = 'no_subakun'
+      end    
+      item
+        Title.Caption = 'Nama Akun'
+        FieldName = 'nama_akun'
+      end    
+      item
+        Title.Caption = 'Kelompok'
+        FieldName = 'kelompok'
+      end    
+      item
+        Title.Caption = 'Kategori'
+        FieldName = 'kategori'
+      end    
+      item
+        Title.Caption = 'Saldo'
+        FieldName = 'saldo'
+        DisplayFormat = 'Rp #,##0'
+      end>
+    DataSource = DataSource1
+    TabOrder = 0
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 8
+    Height = 25
+    Top = 22
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = DataSource1
+    Options = []
+    TabOrder = 1
+  end
+  object DataSource1: TDataSource
+    DataSet = ZQuery1
+    OnDataChange = DataSource1DataChange
+    left = 264
+    top = 16
+  end
+  object ZQuery1: TZQuery
+    Connection = fUtama.ZConnection1
+    Active = True
+    SQL.Strings = (
+      'select * from subakun order by no_subakun  asc;'
+    )
+    Params = <>
+    left = 304
+    top = 16
+  end
+end

@@ -1,0 +1,573 @@
+object fBeli: TfBeli
+  Left = 111
+  Height = 526
+  Top = 111
+  Width = 866
+  Caption = 'Pembelian Barang'
+  ClientHeight = 526
+  ClientWidth = 866
+  LCLVersion = '1.2.6.0'
+  object Label1: TLabel
+    Left = 16
+    Height = 15
+    Top = 12
+    Width = 74
+    Caption = 'No Transaksi :'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 16
+    Height = 15
+    Top = 48
+    Width = 49
+    Caption = 'Tanggal :'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 16
+    Height = 15
+    Top = 80
+    Width = 67
+    Caption = 'Mitra Bisnis :'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 16
+    Height = 15
+    Top = 112
+    Width = 78
+    Caption = 'Nama Barang :'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 16
+    Height = 15
+    Top = 144
+    Width = 25
+    Caption = 'Qty :'
+    ParentColor = False
+  end
+  object Label6: TLabel
+    Left = 16
+    Height = 15
+    Top = 176
+    Width = 102
+    Caption = 'Harga Satuan (Rp) :'
+    ParentColor = False
+  end
+  object Label7: TLabel
+    Left = 16
+    Height = 15
+    Top = 208
+    Width = 69
+    Caption = 'Jumlah (Rp) :'
+    ParentColor = False
+  end
+  object Label8: TLabel
+    Left = 336
+    Height = 15
+    Top = 84
+    Width = 124
+    Caption = 'Diskon/Potongan (Rp) :'
+    ParentColor = False
+  end
+  object Label9: TLabel
+    Left = 336
+    Height = 15
+    Top = 112
+    Width = 101
+    Caption = 'Biaya Angkut (Rp) :'
+    ParentColor = False
+  end
+  object Label10: TLabel
+    Left = 336
+    Height = 15
+    Top = 144
+    Width = 111
+    Caption = 'Biaya Lain-Lain (Rp) :'
+    ParentColor = False
+  end
+  object Label12: TLabel
+    Left = 336
+    Height = 15
+    Top = 176
+    Width = 58
+    Caption = 'Total (Rp) :'
+    ParentColor = False
+  end
+  object edNo: TEdit
+    Left = 120
+    Height = 23
+    Top = 12
+    Width = 136
+    OnChange = edNoChange
+    TabOrder = 0
+  end
+  object edTgl: TDateEdit
+    Left = 120
+    Height = 23
+    Top = 48
+    Width = 136
+    CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+    OKCaption = 'OK'
+    CancelCaption = 'Cancel'
+    DateOrder = doNone
+    ButtonWidth = 23
+    CharCase = ecNormal
+    NumGlyphs = 1
+    MaxLength = 0
+    OnChange = edTglChange
+    TabOrder = 1
+  end
+  object cbMitra: TDBLookupComboBox
+    Left = 120
+    Height = 23
+    Top = 80
+    Width = 160
+    DataField = 'nama'
+    DataSource = DataUser
+    KeyField = 'nama'
+    ListField = 'nama'
+    ListFieldIndex = 0
+    ListSource = DataUser
+    LookupCache = False
+    OnChange = cbMitraChange
+    TabOrder = 2
+  end
+  object cbBarang: TDBLookupComboBox
+    Left = 120
+    Height = 23
+    Top = 112
+    Width = 160
+    DataField = 'nama'
+    DataSource = DataPersediaan
+    KeyField = 'nama'
+    ListField = 'nama'
+    ListFieldIndex = 0
+    ListSource = DataPersediaan
+    LookupCache = False
+    OnChange = cbBarangChange
+    TabOrder = 3
+  end
+  object edQty: TEdit
+    Left = 120
+    Height = 23
+    Top = 144
+    Width = 136
+    OnChange = edQtyChange
+    TabOrder = 4
+  end
+  object edHarga: TEdit
+    Left = 120
+    Height = 23
+    Top = 176
+    Width = 136
+    OnChange = edHargaChange
+    TabOrder = 5
+    Text = '0'
+  end
+  object edJumlah: TEdit
+    Left = 120
+    Height = 23
+    Top = 208
+    Width = 136
+    OnChange = edJumlahChange
+    TabOrder = 6
+    Text = '0'
+  end
+  object edDiskon: TEdit
+    Left = 464
+    Height = 23
+    Top = 80
+    Width = 136
+    OnChange = edDiskonChange
+    TabOrder = 7
+    Text = '0'
+  end
+  object edAngkut: TEdit
+    Left = 464
+    Height = 23
+    Top = 112
+    Width = 136
+    OnChange = edAngkutChange
+    TabOrder = 8
+    Text = '0'
+  end
+  object edLain: TEdit
+    Left = 464
+    Height = 23
+    Top = 144
+    Width = 136
+    OnChange = edLainChange
+    TabOrder = 9
+    Text = '0'
+  end
+  object edPPn: TEdit
+    Left = 464
+    Height = 23
+    Top = 208
+    Width = 136
+    OnChange = edPPnChange
+    TabOrder = 10
+    Text = '0'
+  end
+  object edTotal: TEdit
+    Left = 464
+    Height = 23
+    Top = 176
+    Width = 136
+    OnChange = edTotalChange
+    TabOrder = 11
+    Text = '0'
+  end
+  object DBGrid1: TDBGrid
+    Left = 8
+    Height = 240
+    Top = 280
+    Width = 856
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'No Transaksi'
+        FieldName = 'no_transaksi'
+      end    
+      item
+        Title.Caption = 'Tanggal'
+        FieldName = 'tgl'
+      end    
+      item
+        Title.Caption = 'Mitra Bisnis'
+        FieldName = 'id_user'
+      end    
+      item
+        Title.Caption = 'Nama Barang'
+        FieldName = 'id_persediaan'
+      end    
+      item
+        Title.Caption = 'Qty'
+        FieldName = 'qty'
+        DisplayFormat = '0'
+      end    
+      item
+        Title.Caption = 'Harga Satuan (Rp)'
+        FieldName = 'harga'
+        DisplayFormat = 'Rp #,##0'
+      end    
+      item
+        Title.Caption = 'Jumlah (Rp)'
+        FieldName = 'jumlah'
+        DisplayFormat = 'Rp #,##0'
+      end    
+      item
+        Title.Caption = 'Pembayaran'
+        FieldName = 'bayar'
+      end    
+      item
+        Title.Caption = 'Diskon (%)'
+        FieldName = 'diskon'
+        DisplayFormat = 'Rp #,##0'
+      end    
+      item
+        Title.Caption = 'Biaya Angkut (Rp)'
+        FieldName = 'biaya_kirim'
+        DisplayFormat = 'Rp #,##0'
+      end    
+      item
+        Title.Caption = 'Biaya Lain-Lain (Rp)'
+        FieldName = 'biaya_lain'
+        DisplayFormat = 'Rp #,##0'
+      end    
+      item
+        Title.Caption = 'Pajak (PPn %)'
+        FieldName = 'PPn'
+        DisplayFormat = 'Rp #,##0'
+      end    
+      item
+        Title.Caption = 'Total (Rp)'
+        FieldName = 'total'
+        DisplayFormat = 'Rp #,##0'
+      end>
+    DataSource = DataPembelian
+    TabOrder = 12
+  end
+  object GroupBox1: TGroupBox
+    Left = 336
+    Height = 57
+    Top = 12
+    Width = 264
+    Caption = 'Pembayaran'
+    ClientHeight = 39
+    ClientWidth = 260
+    TabOrder = 13
+    object rbTunai: TRadioButton
+      Left = 16
+      Height = 19
+      Top = 11
+      Width = 50
+      Caption = 'Tunai'
+      OnChange = rbTunaiChange
+      TabOrder = 0
+    end
+    object rbKredit: TRadioButton
+      Left = 80
+      Height = 19
+      Top = 11
+      Width = 51
+      Caption = 'Kredit'
+      OnChange = rbKreditChange
+      TabOrder = 1
+    end
+    object edTglKredit: TDateEdit
+      Left = 136
+      Height = 23
+      Top = 11
+      Width = 80
+      CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+      OKCaption = 'OK'
+      CancelCaption = 'Cancel'
+      DateOrder = doNone
+      ButtonWidth = 23
+      CharCase = ecNormal
+      NumGlyphs = 1
+      MaxLength = 0
+      OnChange = edTglKreditChange
+      TabOrder = 2
+      Visible = False
+    end
+    object Label13: TLabel
+      Left = 136
+      Height = 15
+      Top = -8
+      Width = 86
+      Caption = 'tgl Jatuh Tempo'
+      ParentColor = False
+      Visible = False
+    end
+  end
+  object DBLookupComboBox1: TDBLookupComboBox
+    Left = 636
+    Height = 23
+    Top = 57
+    Width = 100
+    DataField = 'id'
+    DataSource = DataJurnal
+    KeyField = 'id'
+    ListField = 'id'
+    ListFieldIndex = 0
+    ListSource = DataJurnal
+    LookupCache = False
+    TabOrder = 14
+    Visible = False
+  end
+  object DBEdit1: TDBEdit
+    Left = 641
+    Height = 23
+    Top = 104
+    Width = 123
+    DataField = 'uraian'
+    DataSource = DataJurnal
+    CharCase = ecNormal
+    MaxLength = 800
+    TabOrder = 15
+    Visible = False
+  end
+  object DBEdit2: TDBEdit
+    Left = 641
+    Height = 23
+    Top = 142
+    Width = 119
+    DataField = 'jumlah'
+    DataSource = DataJurnal
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 16
+    Visible = False
+  end
+  object edidJurnal: TDBEdit
+    Left = 719
+    Height = 23
+    Top = 21
+    Width = 41
+    DataField = 'id_jurnal'
+    DataSource = DataPembelian
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 17
+    Visible = False
+  end
+  object btEdit: TButton
+    Left = 181
+    Height = 25
+    Top = 248
+    Width = 75
+    Caption = 'Edit'
+    OnClick = btEditClick
+    TabOrder = 18
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 8
+    Height = 25
+    Top = 248
+    Width = 160
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 160
+    DataSource = DataPembelian
+    Options = []
+    TabOrder = 19
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+  end
+  object btTambah: TButton
+    Left = 272
+    Height = 25
+    Top = 248
+    Width = 75
+    Caption = 'Tambah'
+    OnClick = btTambahClick
+    TabOrder = 20
+  end
+  object btSimpan: TButton
+    Left = 360
+    Height = 25
+    Top = 248
+    Width = 75
+    Caption = 'Simpan'
+    OnClick = btSimpanClick
+    TabOrder = 21
+  end
+  object btBatal: TButton
+    Left = 448
+    Height = 25
+    Top = 248
+    Width = 75
+    Caption = 'Batal'
+    OnClick = btBatalClick
+    TabOrder = 22
+  end
+  object cbPPn: TCheckBox
+    Left = 336
+    Height = 19
+    Top = 208
+    Width = 66
+    Caption = 'PPn 10%'
+    OnChange = cbPPnChange
+    TabOrder = 23
+  end
+  object edMitra: TEdit
+    Left = 120
+    Height = 23
+    Top = 80
+    Width = 136
+    OnChange = edMitraChange
+    TabOrder = 24
+  end
+  object edBarang: TEdit
+    Left = 120
+    Height = 23
+    Top = 112
+    Width = 136
+    OnChange = edBarangChange
+    TabOrder = 25
+  end
+  object edbayar: TEdit
+    Left = 636
+    Height = 23
+    Top = 16
+    Width = 32
+    TabOrder = 26
+    Visible = False
+  end
+  object edId: TDBEdit
+    Left = 784
+    Height = 23
+    Top = 21
+    Width = 35
+    DataField = 'id'
+    DataSource = DataPembelian
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 27
+    Visible = False
+  end
+  object ZQPembelian: TZQuery
+    Connection = fUtama.ZConnection1
+    Active = True
+    SQL.Strings = (
+      'select * from pembelian'
+    )
+    Params = <>
+    left = 168
+    top = 424
+  end
+  object ZQUser: TZQuery
+    Connection = fUtama.ZConnection1
+    Active = True
+    SQL.Strings = (
+      'select * from user where kelompok=''Mitra Bisnis'''
+    )
+    Params = <>
+    left = 24
+    top = 424
+  end
+  object ZQPersediaan: TZQuery
+    Connection = fUtama.ZConnection1
+    Active = True
+    SQL.Strings = (
+      'select * from persediaan'
+    )
+    Params = <>
+    left = 88
+    top = 424
+  end
+  object DataPembelian: TDataSource
+    DataSet = ZQPembelian
+    left = 176
+    top = 480
+  end
+  object DataUser: TDataSource
+    DataSet = ZQUser
+    left = 24
+    top = 480
+  end
+  object DataPersediaan: TDataSource
+    DataSet = ZQPersediaan
+    left = 88
+    top = 480
+  end
+  object ZQJurnal: TZQuery
+    Connection = fUtama.ZConnection1
+    Active = True
+    SQL.Strings = (
+      'select * from jurnal'
+    )
+    Params = <>
+    left = 626
+    top = 195
+  end
+  object DataJurnal: TDataSource
+    DataSet = ZQJurnal
+    left = 688
+    top = 195
+  end
+  object ZQUtang: TZQuery
+    Connection = fUtama.ZConnection1
+    Active = True
+    SQL.Strings = (
+      'select * from utang'
+    )
+    Params = <>
+    left = 744
+    top = 195
+  end
+  object DataUtang: TDataSource
+    DataSet = ZQUtang
+    left = 807
+    top = 195
+  end
+end

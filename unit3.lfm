@@ -1,0 +1,266 @@
+object fUser: TfUser
+  Left = 401
+  Height = 445
+  Top = 200
+  Width = 784
+  Caption = 'Data User'
+  ClientHeight = 445
+  ClientWidth = 784
+  Position = poDesktopCenter
+  LCLVersion = '1.2.6.0'
+  object Label2: TLabel
+    Left = 16
+    Height = 15
+    Top = 16
+    Width = 38
+    Caption = 'Nama :'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 16
+    Height = 15
+    Top = 48
+    Width = 82
+    Caption = 'Kontak Person :'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 16
+    Height = 15
+    Top = 80
+    Width = 46
+    Caption = 'Jabatan :'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 441
+    Height = 15
+    Top = 16
+    Width = 43
+    Caption = 'Telpon :'
+    ParentColor = False
+  end
+  object Label6: TLabel
+    Left = 441
+    Height = 15
+    Top = 49
+    Width = 22
+    Caption = 'HP :'
+    ParentColor = False
+  end
+  object Label7: TLabel
+    Left = 441
+    Height = 15
+    Top = 81
+    Width = 35
+    Caption = 'Email :'
+    ParentColor = False
+  end
+  object Label8: TLabel
+    Left = 441
+    Height = 15
+    Top = 113
+    Width = 44
+    Caption = 'Alamat :'
+    ParentColor = False
+  end
+  object Label9: TLabel
+    Left = 16
+    Height = 15
+    Top = 112
+    Width = 60
+    Caption = 'Kelompok :'
+    ParentColor = False
+  end
+  object edNama: TDBEdit
+    Left = 106
+    Height = 23
+    Top = 16
+    Width = 280
+    DataField = 'nama'
+    DataSource = DataSource1
+    CharCase = ecNormal
+    MaxLength = 100
+    TabOrder = 0
+    OnChange = edNamaChange
+  end
+  object edPerson: TDBEdit
+    Left = 106
+    Height = 23
+    Top = 48
+    Width = 280
+    DataField = 'person'
+    DataSource = DataSource1
+    CharCase = ecNormal
+    MaxLength = 60
+    TabOrder = 1
+  end
+  object edJabatan: TDBEdit
+    Left = 106
+    Height = 23
+    Top = 80
+    Width = 280
+    DataField = 'jabatan'
+    DataSource = DataSource1
+    CharCase = ecNormal
+    MaxLength = 80
+    TabOrder = 2
+  end
+  object cbKelompok: TDBLookupComboBox
+    Left = 106
+    Height = 23
+    Top = 113
+    Width = 280
+    DataField = 'nama_kelompok'
+    DataSource = DataSource2
+    KeyField = 'nama_kelompok'
+    ListField = 'nama_kelompok'
+    ListFieldIndex = 0
+    ListSource = DataSource2
+    LookupCache = False
+    OnChange = cbKelompokChange
+    TabOrder = 10
+    TabStop = False
+  end
+  object edTelp: TDBEdit
+    Left = 490
+    Height = 23
+    Top = 16
+    Width = 280
+    DataField = 'telpon'
+    DataSource = DataSource1
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentBiDiMode = False
+    TabOrder = 3
+  end
+  object edHp: TDBEdit
+    Left = 489
+    Height = 23
+    Top = 48
+    Width = 281
+    DataField = 'hp'
+    DataSource = DataSource1
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentBiDiMode = False
+    TabOrder = 4
+  end
+  object edEmail: TDBEdit
+    Left = 490
+    Height = 23
+    Top = 80
+    Width = 280
+    DataField = 'email'
+    DataSource = DataSource1
+    CharCase = ecNormal
+    MaxLength = 80
+    ParentBiDiMode = False
+    TabOrder = 5
+  end
+  object edAlamat: TDBEdit
+    Left = 490
+    Height = 23
+    Top = 113
+    Width = 280
+    DataField = 'alamat'
+    DataSource = DataSource1
+    CharCase = ecNormal
+    MaxLength = 200
+    TabOrder = 6
+  end
+  object DBGrid1: TDBGrid
+    Left = 16
+    Height = 232
+    Top = 201
+    Width = 754
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'Nama'
+        FieldName = 'nama'
+      end    
+      item
+        Title.Caption = 'Kontak Person'
+        FieldName = 'person'
+      end>
+    DataSource = DataSource1
+    TabOrder = 7
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 16
+    Height = 25
+    Top = 176
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = DataSource1
+    OnClick = DBNavigator1Click
+    Options = []
+    TabOrder = 8
+  end
+  object edKelompok: TDBEdit
+    Left = 106
+    Height = 23
+    Top = 113
+    Width = 256
+    DataField = 'kelompok'
+    DataSource = DataSource1
+    CharCase = ecNormal
+    MaxLength = 80
+    TabOrder = 9
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 15
+    Top = 141
+    Width = 40
+    Caption = 'NPWP :'
+    ParentColor = False
+  end
+  object ednpwp: TDBEdit
+    Left = 106
+    Height = 23
+    Top = 141
+    Width = 280
+    DataField = 'npwp'
+    DataSource = DataSource1
+    CharCase = ecNormal
+    MaxLength = 120
+    TabOrder = 11
+  end
+  object DataSource1: TDataSource
+    DataSet = ZQuery1
+    left = 496
+    top = 152
+  end
+  object ZQuery1: TZQuery
+    Connection = fUtama.ZConnection1
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM user '
+    )
+    Params = <>
+    left = 448
+    top = 152
+  end
+  object ZTable1: TZTable
+    Connection = fUtama.ZConnection1
+    Active = True
+    TableName = 'kelompok'
+    left = 552
+    top = 152
+  end
+  object DataSource2: TDataSource
+    DataSet = ZTable1
+    left = 600
+    top = 152
+  end
+end

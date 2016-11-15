@@ -1,0 +1,221 @@
+object fBank: TfBank
+  Left = 425
+  Height = 389
+  Top = 160
+  Width = 593
+  AutoSize = True
+  Caption = 'Kas/ Bank'
+  ClientHeight = 389
+  ClientWidth = 593
+  OnCreate = FormCreate
+  LCLVersion = '1.2.6.0'
+  object DBGrid1: TDBGrid
+    Left = 8
+    Height = 212
+    Top = 168
+    Width = 576
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'No Akun'
+        FieldName = 'no_subakun'
+      end    
+      item
+        Title.Caption = 'Nama Akun'
+        FieldName = 'nama_akun'
+      end    
+      item
+        Title.Caption = 'Saldo'
+        FieldName = 'saldo'
+        DisplayFormat = 'Rp #,#0'
+      end>
+    DataSource = DataSource1
+    TabOrder = 0
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 8
+    Height = 25
+    Top = 136
+    Width = 280
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 280
+    DataSource = DataSource1
+    Options = []
+    TabOrder = 1
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbDelete, nbEdit, nbPost, nbCancel]
+  end
+  object gbBank: TGroupBox
+    Left = 8
+    Height = 122
+    Top = 8
+    Width = 296
+    Caption = 'Tambah Bank'
+    ClientHeight = 104
+    ClientWidth = 292
+    TabOrder = 2
+    object btTambah: TButton
+      Left = 8
+      Height = 25
+      Top = 72
+      Width = 91
+      Caption = 'Tambah Bank'
+      OnClick = btTambahClick
+      TabOrder = 0
+    end
+    object btSimpan: TButton
+      Left = 112
+      Height = 25
+      Top = 72
+      Width = 75
+      Caption = 'Simpan'
+      OnClick = btSimpanClick
+      TabOrder = 1
+    end
+    object Label4: TLabel
+      Left = 16
+      Height = 15
+      Top = 8
+      Width = 67
+      Caption = 'Nama Bank :'
+      ParentColor = False
+    end
+    object btBatal: TButton
+      Left = 200
+      Height = 25
+      Top = 72
+      Width = 75
+      Caption = 'Batal'
+      OnClick = btBatalClick
+      TabOrder = 2
+    end
+    object Label5: TLabel
+      Left = 15
+      Height = 15
+      Top = 39
+      Width = 35
+      AutoSize = False
+      Caption = 'Saldo :'
+      ParentColor = False
+    end
+    object edBank: TEdit
+      Left = 88
+      Height = 23
+      Top = 8
+      Width = 187
+      TabOrder = 3
+    end
+    object edSaldo: TEdit
+      Left = 88
+      Height = 23
+      Top = 40
+      Width = 187
+      TabOrder = 4
+    end
+  end
+  object cbNo_Subakun: TDBLookupComboBox
+    Left = 644
+    Height = 23
+    Top = 152
+    Width = 100
+    DataField = 'no_subakun'
+    DataSource = DataSource2
+    KeyField = 'no_subakun'
+    ListField = 'no_subakun'
+    ListFieldIndex = 0
+    ListSource = DataSource2
+    LookupCache = False
+    TabOrder = 3
+  end
+  object edNo_Akun: TDBEdit
+    Left = 646
+    Height = 23
+    Top = 185
+    Width = 80
+    DataField = 'no_akun'
+    DataSource = DataSource2
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 4
+  end
+  object edNama_akun: TDBEdit
+    Left = 648
+    Height = 23
+    Top = 215
+    Width = 80
+    DataField = 'nama_akun'
+    DataSource = DataSource2
+    CharCase = ecNormal
+    MaxLength = 80
+    TabOrder = 5
+  end
+  object edKelompok: TDBEdit
+    Left = 648
+    Height = 23
+    Top = 257
+    Width = 80
+    DataField = 'kelompok'
+    DataSource = DataSource2
+    CharCase = ecNormal
+    MaxLength = 28
+    TabOrder = 6
+  end
+  object edKategori: TDBEdit
+    Left = 651
+    Height = 23
+    Top = 289
+    Width = 80
+    DataField = 'kategori'
+    DataSource = DataSource2
+    CharCase = ecNormal
+    MaxLength = 28
+    TabOrder = 7
+  end
+  object DBEdit8: TDBEdit
+    Left = 646
+    Height = 23
+    Top = 326
+    Width = 80
+    DataField = 'saldo'
+    DataSource = DataSource2
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 8
+  end
+  object ZQuery1: TZQuery
+    Connection = fUtama.ZConnection1
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM subakun WHERE no_akun=''11120'' or no_subakun=''11110'''
+    )
+    Params = <>
+    left = 424
+    top = 32
+  end
+  object DataSource1: TDataSource
+    DataSet = ZQuery1
+    left = 424
+    top = 104
+  end
+  object ZQuery2: TZQuery
+    Connection = fUtama.ZConnection1
+    Active = True
+    SQL.Strings = (
+      'select * from subakun where no_akun=''11120'' order by no_subakun desc;'
+    )
+    Params = <>
+    left = 480
+    top = 32
+  end
+  object DataSource2: TDataSource
+    DataSet = ZQuery2
+    left = 480
+    top = 104
+  end
+end

@@ -1,0 +1,44 @@
+object fLogin: TfLogin
+  Left = 299
+  Height = 152
+  Top = 147
+  Width = 320
+  Caption = 'Login'
+  ClientHeight = 152
+  ClientWidth = 320
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '1.2.6.0'
+  object Label1: TLabel
+    Left = 72
+    Height = 22
+    Top = 32
+    Width = 193
+    Caption = 'MASUKAN PASSWORD :'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Name = 'Palatino Linotype'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object edLogin: TEdit
+    Left = 72
+    Height = 23
+    Top = 64
+    Width = 193
+    TabOrder = 0
+  end
+  object btLogin: TButton
+    Left = 120
+    Height = 25
+    Top = 96
+    Width = 96
+    Caption = 'Login'
+    OnClick = btLoginClick
+    TabOrder = 1
+  end
+end
